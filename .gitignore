@@ -1,9 +1,18 @@
+# Environment files
 .env
+
+# Python cache
 __pycache__/
 *.pyc
+
+# Virtual environment
 venv/
-.vscode/
+
+# Generated outputs
 backend/outputs/
+
+# VS Code
+.vscode/
+
+# Frontend
 frontend/node_modules/
-.env
-__pycache__/
