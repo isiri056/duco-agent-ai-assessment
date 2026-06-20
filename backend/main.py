@@ -1,17 +1,33 @@
 from fastapi import FastAPI
-from agents.cob_agent import calculate_acl_claim
+
+from agents.document_agent import analyze_documents
+from agents.cob_agent import coordinate_benefits
+from agents.preauth_agent import generate_preauth_letters
 
 app = FastAPI()
 
+
 @app.get("/")
-def home():
+def root():
+    return {"message": "DuCO Agent Running"}
+
+
+@app.get("/analyze")
+def analyze():
+
+    print("STEP 1")
+    documents = analyze_documents()
+
+    print("STEP 2")
+    cob = coordinate_benefits()
+
+    print("STEP 3")
+    letters = generate_preauth_letters()
+
+    print("STEP 4")
 
     return {
-        "message": "DuCO Agent Running"
+        "documents": documents,
+        "cob": cob,
+        "letters": letters
     }
-
-@app.get("/claim")
-
-def claim():
-
-    return calculate_acl_claim()
